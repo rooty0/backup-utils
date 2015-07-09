@@ -1,0 +1,46 @@
+##
+## General settings
+##
+
+# General path
+PATH_BIN_MYSQL="/usr/local/bin/mysql"
+PATH_BIN_MYSQLDUMP="/usr/local/bin/mysqldump"
+PATH_BIN_ARCHIVE="/usr/local/bin/7z"
+PATH_BIN_TAR="/usr/bin/tar"
+
+# File Archiver Options
+ARCHIVE_OPTIONS="a -bd -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on -y"
+
+# After this time backup will be known as old and will be deleted. Following value represented as week (!)
+OLD_BACKUPS="16"
+
+
+##
+## MySQL backup settings
+##
+
+# Path to store MySQL backups
+PATH_MYSQL_BACKUP="/storage/backups/mysql"
+
+# Path to MySQL defaults file. YOU SHOULD specify login and password inside the file
+MYSQL_DEF_FILE="/home/user/.my.cnf"
+
+# Specify databases which you want to skip. Use space as a seperator
+BACKUP_DB_EXCEPTIONS="mysql information_schema performance_schema test"
+
+# Put file(s) to archive (reduce space of the backup file). This is very useful but will consume more CPU.
+COMPRESS_FILES="yes"
+
+
+
+##
+## WWW backup settings
+##
+
+# Path to store WWW backups
+PATH_WWW_BACKUP="/storage/backups/www"
+
+# Run following before and after actual backup process
+#RUN_BEFORE_START="/sbin/ipfw add 111 deny ip from any to me dst-port 21"
+#RUN_AT_THE_END="/sbin/ipfw delete 111"
+

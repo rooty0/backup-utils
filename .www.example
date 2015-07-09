@@ -1,0 +1,17 @@
+# 
+# To active backup you need to place name of backup below. Use space as separator
+# Any name of backup should be unique (!)
+#
+ACTIVE_PROJECTS=""
+
+#
+# WWW backup websites options
+#
+
+# some.domain.com
+PATH_WEBSITE_ROOT_PROJECTNAME="/var/www/some.domain.com"
+PATH_WEBSITE_EXCLUDE_PROJECTNAME="/var/www/some.domain.com/tmp /var/www/some.domain.com/sessions"
+
+# www.domain.net
+PATH_WEBSITE_ROOT_PROJECTNAMETWO="/var/www/www.domain.net"
+PATH_WEBSITE_EXCLUDE_PROJECTNAMETWO="tmp sessions"
