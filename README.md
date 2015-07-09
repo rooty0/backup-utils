@@ -97,6 +97,34 @@ Example:
 You should provide path for [MySQL defaults file](https://dev.mysql.com/doc/refman/5.5/en/option-files.html "defaults file")
 inside **.config** file.
 
+To setup backups for websites modify **.www**. Variable ``ACTIVE_PROJECTS`` should contain project names separated with space.
+Unique names allowed only! Then based on project name you need to create following related variables.
+
+    PATH_WEBSITE_ROOT_projectname=
+    PATH_WEBSITE_EXCLUDE_projectname=
+
+Where _projectname_ is a key name which placed into ``ACTIVE_PROJECTS`` variable.
+
+Example:
+
+    ACTIVE_PROJECTS="MYSITE MYWHATEVER MYFORUM_L2"
+
+    # www.example.org
+    PATH_WEBSITE_ROOT_MYSITE="/var/jails/jailb/var/www/www.example.org/www"
+    PATH_WEBSITE_EXCLUDE_MYSITE=""
+
+    # example.com
+    PATH_WEBSITE_ROOT_MYWHATEVER="/var/www/example.com"
+    PATH_WEBSITE_EXCLUDE_MYWHATEVER="/var/www/example.com/downloads /var/www/example.com/tmp"
+
+    # forum.example.net
+    PATH_WEBSITE_ROOT_MYFORUM_L2="/var/jails/jaila/var/www/forum.example.net/www"
+    PATH_WEBSITE_EXCLUDE_MYFORUM_L2="cache"
+
+Pay attention on different variation of ``PATH_WEBSITE_EXCLUDE_xxxxx`` variable.
+You can specify full path or you are able to use relative path from ``PATH_WEBSITE_ROOT_xxxxx`` variable.
+If you want to exclude more then single resource just use space as delimiter.
+
 
 You probably want put that into your crontab under root account for each machine/instance.
 _As a fancy improvement you can put that into Rundeck instead of Crontab or puppetize that._
