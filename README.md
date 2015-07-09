@@ -7,7 +7,7 @@ Backup Utilities - useful instrument to create and manage your backups.
 
 ##Description
 
-There are 2 scripts that should be used to create backups
+There are 2 scripts that should be used to create backups. These scripts running under low priority (``nice``) so they not going to kill your envirement. 
 
 ###mysql.sh
 
