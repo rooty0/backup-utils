@@ -12,6 +12,7 @@ There are 2 scripts that should be used to create backups
 ###mysql.sh
 
 This script performs backup of MySQL databases. It also cleans old backups and can compress backup file to save some disk space for you.
+By defaut it performs backup for every single database but you can specify excludes. This is really convenient you'll like it.
 
 Output example:
 
@@ -34,7 +35,7 @@ Output example:
     
 ###www.sh
 
-This script performs backup of your Web Sites. You are able to exclude any dir in configuration file if it's messy inside your www root.
+This script performs backup of your Web Sites. You are able to exclude any dir in configuration file if it's messy inside your www root(s).
 It also cleans old backups, saves file mode bits (chmod), files owner/group, and can compress backup file to save some disk space for you.
 
 Output example:
@@ -81,7 +82,7 @@ You should create config files first
     $ chown root .config .www
     $ chmod 600 .config .www
     
-If your OS other then FreeBSD you must change path for each unix tool _(like path to tar, 7z, mysqldump, etc...)_.
+If your OS other then FreeBSD you must change path in configuration file for each unix tool _(like path to tar, 7z, mysqldump, etc...)_.
     
 Also if you going to backup your MySQL data,
 be sure that you have [MySQL defaults file](https://dev.mysql.com/doc/refman/5.5/en/option-files.html "defaults file")
