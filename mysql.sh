@@ -8,7 +8,7 @@ BASEDIR=$(dirname $0)
 
 . "${BASEDIR}/.config"
 
-NOW=$(/bin/date +"%d.%m.%Y.%H.%M")
+NOW=$(/bin/date +"%Y.%m.%d.%H.%M")
 DBS="$($PATH_BIN_MYSQL --defaults-file=${MYSQL_DEF_FILE} -Bse 'show databases')"
 
 if [ -z "${DBS}" ]; then echo "!!!DATABASE LIST IS EMPTY!!!"; exit 1; fi;
@@ -42,7 +42,7 @@ if [ ${COMPRESS_FILES} = "yes" ]
 
   for DB_FILE in $(ls -1 "${PATH_MYSQL_BACKUP}/${NOW}" | xargs)
    do
-    
+
     /usr/bin/nice -n 15 ${PATH_BIN_ARCHIVE} ${ARCHIVE_OPTIONS} "${PATH_MYSQL_BACKUP}/${NOW}/${DB_FILE}.7z" "${PATH_MYSQL_BACKUP}/${NOW}/${DB_FILE}" >/dev/null
 
     if [ $? -eq 0 ]
@@ -51,7 +51,7 @@ if [ ${COMPRESS_FILES} = "yes" ]
      else
       echo "!!!!! SOMETHING WRONG HAPPENS DUE COMPRESS FILE ${DB_FILE} !!!!!"
     fi
-     
+
   done
 
 fi

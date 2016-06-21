@@ -8,7 +8,7 @@ BASEDIR=$(dirname $0)
 . "${BASEDIR}/.config"
 . "${BASEDIR}/.www"
 
-NOW=$(/bin/date +"%d.%m.%Y.%H.%M")
+NOW=$(/bin/date +"%Y.%m.%d.%H.%M")
 
 [ -n "${RUN_BEFORE_START}" ] && eval "${RUN_BEFORE_START}"
 
