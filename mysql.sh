@@ -11,7 +11,11 @@ BASEDIR=$(dirname $0)
 NOW=$(/bin/date +"%Y.%m.%d.%H.%M")
 DBS="$($PATH_BIN_MYSQL --defaults-file=${MYSQL_DEF_FILE} -Bse 'show databases')"
 
-if [ -z "${DBS}" ]; then echo "!!!DATABASE LIST IS EMPTY!!!"; exit 1; fi;
+if [ -z "${DBS}" ]
+then
+  echo "!!!DATABASE LIST IS EMPTY!!!" 1>&2
+  exit 1
+fi
 
 [ ! -d "${PATH_MYSQL_BACKUP}/${NOW}" ] && mkdir -p "${PATH_MYSQL_BACKUP}/${NOW}"
 
@@ -22,12 +26,13 @@ for DB in ${DBS}
 
   for DB_EXCEPTION in ${BACKUP_DB_EXCEPTIONS}
    do
-    if [ "${DB}" = "${DB_EXCEPTION}" ]; then continue 2; fi;
+    [ "${DB}" = "${DB_EXCEPTION}" ] && continue 2
   done
 
   echo "] Processing database \"${DB}\""
 
   ${PATH_BIN_MYSQLDUMP} --defaults-file=${MYSQL_DEF_FILE} -f ${DB} > ${PATH_MYSQL_BACKUP}/${NOW}/mydb_backup_${DB}_database.sql
+  [ $? -gt 0 ] && echo "Dump fail for \"${DB}\"" 1>&2
 
 done
 
@@ -49,7 +54,7 @@ if [ ${COMPRESS_FILES} = "yes" ]
      then
       rm -rf ${PATH_MYSQL_BACKUP}/${NOW}/${DB_FILE}
      else
-      echo "!!!!! SOMETHING WRONG HAPPENS DUE COMPRESS FILE ${DB_FILE} !!!!!"
+      echo "!!!!! SOMETHING WRONG HAPPENS DUE COMPRESS FILE ${DB_FILE} !!!!!" 1>&2
     fi
 
   done

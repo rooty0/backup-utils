@@ -19,7 +19,7 @@ for ACTIVE_PROJECT in ${ACTIVE_PROJECTS}
 
   if [ -z "$wd" ]
   then
-    echo "I'll skip \"$wd\" because value is empty"
+    echo "I'll skip \"$wd\" because value is empty" 1>&2
     continue
   fi
 
@@ -29,7 +29,7 @@ for ACTIVE_PROJECT in ${ACTIVE_PROJECTS}
 
   if [ ! -d "$wd" ]
    then
-    echo "I'll skip \"$wd\" due error... check this directory"
+    echo "I'll skip \"$wd\" due error... check this directory" 1>&2
     continue
   fi
 
