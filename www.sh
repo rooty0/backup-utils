@@ -63,7 +63,7 @@ done
 
 echo '>>> Cleaning old Backups'
 
-/usr/bin/find ${PATH_WWW_BACKUP} -ctime +${OLD_BACKUPS}w -type d -exec /bin/rm -rvf {} \;
+/usr/bin/find ${PATH_WWW_BACKUP}/* -mtime +${OLD_BACKUPS}w -type d -exec /bin/rm -rvf {} \;
 
 echo ">>> Operation took time from ${NOW} to `/bin/date +"%d.%m.%Y.%H.%M"`"
 
