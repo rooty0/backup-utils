@@ -38,7 +38,8 @@ done
 
 echo '>>> Cleaning old Backups'
 
-/usr/bin/find ${PATH_MYSQL_BACKUP}/* -mtime +${OLD_BACKUPS}w -type d -exec /bin/rm -rvf {} \;
+#/usr/bin/find ${PATH_MYSQL_BACKUP}/* -mtime +${OLD_BACKUPS}w -type d -exec /bin/rm -rvf {} \;
+/usr/bin/find ${PATH_MYSQL_BACKUP}/* -maxdepth 0 -mtime +${OLD_BACKUPS}w -type d | /usr/bin/xargs /bin/rm -rvf
 
 if [ ${COMPRESS_FILES} = "yes" ]
  then
