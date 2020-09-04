@@ -1,15 +1,16 @@
 # backup-utils
 
-##Overview
+## Overview
 
 Backup Utilities - useful instrument to create and manage your backups.
 
+There're a lot of backup solutions out there. The key difference between this one and others is **zero dependency** for this tool. **You don't even need to have bash installed** (/bin/sh works great!). Just deploy these scripts and you're good to go. I use these tools on my production system since 2014
 
-##Description
+## Description
 
 There are 2 scripts that should be used to create backups. These scripts running under low priority (``nice``) so they not going to kill your envirement. 
 
-###mysql.sh
+### mysql.sh
 
 This script performs backup of MySQL databases. It also cleans old backups and can compress backup file to save some disk space for you.
 By defaut it performs backup for every single database but you can specify excludes. This is really convenient you'll like it.
@@ -33,7 +34,7 @@ Output example:
     >>> Creating an archive using /usr/local/bin/7z
     >>> Operation took time from 09.07.2015.22.10 to 09.07.2015.22.21
     
-###www.sh
+### www.sh
 
 This script performs backup of your Web Sites. You are able to exclude any dir in configuration file if it's messy inside your www root(s).
 It also cleans old backups, saves file mode bits (chmod), files owner/group, and can compress backup file to save some disk space for you.
@@ -65,7 +66,7 @@ Output example:
     >>> Cleaning old Backups
     >>> Operation took time from 09.07.2015.22.19 to 09.07.2015.22.34
 
-##Requirements
+## Requirements
 
 * **mysql client** and **mysqldump**. Usually mysqldump comes with mysql client, depends on your distributive/package system.
 * **7-zip** to compress backups.
@@ -73,7 +74,7 @@ Basically you can use whatever you want but I would recommend [7-zip](http://www
 _You really want to install that from package/port system._
 
 
-##Setup
+## Setup
 
 You should create config files first
 
@@ -140,13 +141,13 @@ _As a fancy improvement you can put that into Rundeck instead of Crontab or pupp
     30      5       *       *       2,5     /home/user/backup-utils/www.sh
 
 
-##Limitations
+## Limitations
 
 These utilities are tested on FreeBSD only but they should work on any unix OS as well.
 
 
-##Development
+## Development
 
-###Contributing
+### Contributing
 
 Feel free to send pull requests with updates.
